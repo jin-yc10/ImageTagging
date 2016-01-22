@@ -48,6 +48,11 @@ class User extends Model implements AuthenticatableContract,
     public function isReception(){
         return $this->is_reception;
     }
+    public function  isLocked(){
+        return $this->is_locked;
+    }
+
+
     public function Lottery(){
         return $this->belongsToMany('\App\BigLottery','biglottery_user','user_id','biglottery_id')->withTimestamps();
     }

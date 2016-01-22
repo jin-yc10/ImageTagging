@@ -114,7 +114,7 @@ Route::group([
 
 Route::group([
     'prefix'=>'tag',
-    'middleware' => ['auth']
+    'middleware' => ['auth','locked']
     ], function(){
     Route::get('/', function(){
 
@@ -128,7 +128,7 @@ Route::group([
 
 Route::group([
     'prefix'=>'tag',
-    'middleware' => ['auth']
+    'middleware' => ['auth','locked']
 ], function(){
     Route::get('/',function(){
         return view('tag.index',[
@@ -164,19 +164,24 @@ Route::group([
         return view('user.editpassword');
     });
     Route::post('editpassword','UserController@editPassword');
+    Route::get('wrongitem','UserController@wrongitem');
+    Route::get('goods','UserController@goods');
+    Route::get('awards','UserController@awards');
+    Route::get('lottery','UserController@lottery');
 
-    Route::get('goods',function(){
-        return view('user.goods',['user'=>\Illuminate\Support\Facades\Auth::user()]);
-    });
-    Route::get('awards',function(){
-        return view('user.awards',['user'=>\Illuminate\Support\Facades\Auth::user()]);
-    });
-    Route::get('lottery',function(){
-        return view('user.lottery',['user'=>\Illuminate\Support\Facades\Auth::user()]);
-    });
-    Route::get('wrongitem',function(){
-        return view('user.wrongitem',['user'=>\Illuminate\Support\Facades\Auth::user()]);
-    });
+//    Route::get('goods',function(){
+//        return view('user.goods',['user'=>\Illuminate\Support\Facades\Auth::user()]);
+//    });
+//    Route::get('awards',function(){
+//        return view('user.awards',['user'=>\Illuminate\Support\Facades\Auth::user()]);
+//    });
+//    Route::get('lottery',function(){
+//        return view('user.lottery',['user'=>\Illuminate\Support\Facades\Auth::user()]);
+//    });
+
+//    Route::get('wrongitem',function(){
+//        return view('user.wrongitem',['user'=>\Illuminate\Support\Facades\Auth::user()]);
+//    });
     Route::get('appeal/{id}','UserController@appeal');
 
 
@@ -184,7 +189,7 @@ Route::group([
 
 Route::group([
     'prefix'=>'gl',
-    'middleware' => ['auth']
+    'middleware' => ['auth','locked']
 ], function(){
     Route::get('/', function(){
         return view('lottery.index');

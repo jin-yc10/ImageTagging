@@ -15,7 +15,7 @@
                         <h3 class="timeline-title">兑换商品</h3>
                         <p class="t-info">以下是您所有兑换商品的时间轴</p>
                     </div>
-                    @foreach($user->GoodsUser()->orderBy('updated_at','desc')->get() as $index => $goodsUser)
+                    @foreach($goodsUsers as $index => $goodsUser)
                         <div class="timeline">
                             <article class="timeline-item {{ $index % 2 == 0 ? 'alt' : ''}}">
                                 <div class="timeline-desk">
@@ -42,6 +42,7 @@
                             </article>
                         </div>
                     @endforeach
+                    {!! $goodsUsers->render() !!}
 
                     <div class="clearfix">&nbsp;</div>
                 </div>

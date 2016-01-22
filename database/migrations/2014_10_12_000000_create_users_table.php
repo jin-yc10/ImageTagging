@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->integer('points');
-            $table->boolean('is_locked')->default(true);
+            $table->boolean('is_locked')->default(false);
             $table->boolean('is_admin');
             $table->boolean('is_reception');
             $table->rememberToken();

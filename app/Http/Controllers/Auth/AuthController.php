@@ -91,7 +91,6 @@ class AuthController extends Controller
             $request->session()->flash('flash_message', '用户名或密码错误');
             return redirect("/u/login");
         }
-
     }
 
     public function getRegister()

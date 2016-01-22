@@ -15,7 +15,7 @@
                         <h3 class="timeline-title">中奖信息</h3>
                         <p class="t-info">以下是您所有中奖情况时间轴</p>
                     </div>
-                    @foreach($user->AwardUser as $index => $awardUser)
+                    @foreach($awardUsers as $index => $awardUser)
                         <div class="timeline">
                             <article class="timeline-item {{$index % 2 == 0 ? 'alt' : ''}}">
                                 <div class="timeline-desk">
@@ -42,6 +42,7 @@
                             </article>
                         </div>
                     @endforeach
+                    {!! $awardUsers->render() !!}
 
                     <div class="clearfix">&nbsp;</div>
                 </div>

@@ -57,10 +57,9 @@
                             }
                             return ($a->token < $b->token) ? -1 : 1;
                         }
-                        $lotteryUser = $user->LotteryUser()->orderBy('updated_at','desc')->get();
                         $lotteryRecord = Array();
 
-                        foreach($lotteryUser as $lu ){
+                        foreach($lotteryUsers as $lu ){
 
                             $biglottery = $lu->BigLottery;
                             if (!isset($lotteryRecord[$biglottery->id])){

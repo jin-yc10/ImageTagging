@@ -35,5 +35,33 @@ class UserController extends Controller
         Session::flash('flash_message', '申诉申请已提交,请等待管理人员审核.');
         return \Redirect::back();
     }
+    public function wrongitem(){
+        $wrongItems = \Auth::user()->WrongItem()->orderBy('updated_at','desc')->paginate(5);
+
+        $wrongItems->setPath(url('/u/wrongitem'));
+
+        return view('user.wrongitem',compact('wrongItems'));
+    }
+    public function goods(){
+        $goodsUsers = \Auth::user()->GoodsUser()->orderBy('updated_at','desc')->paginate(5);
+
+        $goodsUsers->setPath(url('/u/goods'));
+
+        return view('user.goods',compact('goodsUsers'));
+    }
+    public function awards(){
+        $awardUsers = \Auth::user()->AwardUser()->orderBy('updated_at','desc')->paginate(5);
+
+        $awardUsers->setPath(url('/u/awards'));
+
+        return view('user.awards',compact('awardUsers'));
+    }
+    public function lottery(){
+        $lotteryUsers = \Auth::user()->LotteryUser()->orderBy('updated_at','desc')->get();
+
+//        $lotteryUsers->setPath(url('/u/lottery'));
+
+        return view('user.lottery',compact('lotteryUsers'));
+    }
 
 }

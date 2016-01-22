@@ -17,7 +17,7 @@
                         <p class="t-info">(标注结果通过多人标注,进行投票确定,如果您对标注结果有疑问,可以通过申诉找回积分)</p>
                     </div>
 
-                @foreach($user->WrongItem as $index => $wrongItem)
+                @foreach($wrongItems as $index => $wrongItem)
                     <div class="timeline">
                         <article class="timeline-item {{ $index % 2 == 0 ? 'alt' : ''}}">
                             <div class="timeline-desk">
@@ -63,6 +63,7 @@
                     </div>
 
                 @endforeach
+                    {!! $wrongItems->render() !!}
 
                     <div class="clearfix">&nbsp;</div>
                 </div>
