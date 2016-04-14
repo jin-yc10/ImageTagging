@@ -41,7 +41,7 @@
                 <img src="{{asset($standard->path)}}" style="height: 200px; margin-right: 50px;">
             </div>
             <div class="col-md-8" style="border-left: 1px solid #000; text-align: left;">
-                <h3 style="margin-left: 60px;">下图蓝色框中的人是否与左侧图片为同一人?</h3>
+                <h3 style="margin-left: 60px;">下图<span style="color:blue">蓝色框</span>中的人是否与左侧图片为同一人?</h3>
                 <div class="col-md-4" style="margin-left: 50px">
                     <form action="{{url("/tag/".$dataset->id)}}" method="POST" class="form-inline" id="yes-form">
                         <input type="hidden" name="label" value="True">
