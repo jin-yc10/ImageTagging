@@ -28,6 +28,7 @@ class UserController extends Controller
         Session::flash('flash_message', '密码修改成功');
         return \Redirect::back();
     }
+   
     public function appeal($id){
         $wrongItem = WrongItem::findOrFail($id);
         $wrongItem->is_appeal = 1;

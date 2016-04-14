@@ -61,7 +61,7 @@
                     </form>
                 </div>
                 <div class="col-md-8">
-                    <img src="{{asset($item->path)}}" style="max-width: 450px; max-height:400px; margin:20px 50px 50px 50px;">
+                    <img src="{{asset($item->path)}}" style="max-width: 450px; margin:20px 50px 50px 50px;">
                 </div>
                 {{--<div id="point" style="--}}
                         {{--position: absolute;--}}

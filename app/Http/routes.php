@@ -103,6 +103,7 @@ Route::group([
     Route::get('user/{id}/lock','UserController@lock');
     Route::get('user/{id}/unlock','UserController@unlock');
     Route::get('user/{id}/destroy','UserController@destroy');
+    Route::post('user/update','UserController@update');
     Route::get('user/appeal','UserController@appeal');
     Route::get('user/{id}/deladmin','UserController@deladmin');
     Route::get('user/{id}/add2admin','UserController@add2admin');

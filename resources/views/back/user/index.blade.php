@@ -46,6 +46,8 @@
                             @else
                                 <a href="{{url('admin/user/'.$user->id."/add2reception")}}" class="btn btn-info btn-xs"><i class="icon-desktop">前台</i></a>
                             @endif
+
+                            <button type="button" data-userid="{{$user->id}}" data-points="{{$user->points}}" data-name="{{$user->name}}" data-toggle="modal" data-target="#editpoints"  role="button" class="btn btn-primary btn-xs"><i class="icon-pencil">修改积分</i></button>
                             <a href="{{url('admin/user/'.$user->id."/destroy")}}" onClick="return confirm('{{"确认要删除用户".$user->name."么？"}}');" class="btn btn-danger btn-xs"><i class="icon-trash ">删除</i></a>
                         </td>
                     </tr>
@@ -56,7 +58,50 @@
         </section>
     </div>
 </div>
+    <div class="modal fade" id="editpoints" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">修改用户积分</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{url('admin/user/update')}}" role="form" method="post">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            <input type="hidden" name="id" id="id">
+                            <div class="form-group">
+                                <label for="name" class="control-label">姓名</label>
+                                <input name="name" type="text" class="form-control" id="name" readonly="readonly">
+                            </div>
+                            <div class="form-group">
+                                <label for="points" class="control-label">积分</label>
+                                <input name="points" type="text" class="form-control" id="points">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary"  value="修改">
+                                <input type="reset" class="btn btn-default" data-dismiss="modal" value="取消">
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('script')
+    <script type="text/javascript">
+        $('#editpoints').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var userid = button.data('userid') // Extract info from data-* attributes
+            var points = button.data('points');
+            var name = button.data('name');
+            $('#id').val(userid);
+            $('#name').val(name);
+            $('#points').val(points);
+        })
+
+    </script>
 @endsection

@@ -23,6 +23,20 @@ class UserController extends Controller
 
         return view('back.user.appeals',compact('wrongItems'));
     }
+    public function update(Request $request){
+        $this->validate($request, [
+            'id' => 'required|integer',
+            'points' => 'required|integer',
+        ]);
+        $input = $request->all();
+        $id = $input['id'];
+        $points = $input['points'];
+        $user = User::findOrFail($id);
+        $user->points = $points;
+        $user->save();
+        Session::flash('flash_message', '积分修改成功');
+        return \Redirect::back();
+    }
 
     public function pass($id){
         $wrongItem = WrongItem::findOrFail($id);
